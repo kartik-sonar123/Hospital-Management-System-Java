@@ -17,7 +17,6 @@
 </ul>
 <h2>Contributing</h2>
 <p>Contributions are welcome! If you'd like to improve this project, feel free to fork the repository and submit a pull request.</p>
-<hr />
 <h2>Contact</h2>
 <ul>
   <li>ksonar184@gmail.com</li>
