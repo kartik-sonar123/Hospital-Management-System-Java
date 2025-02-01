@@ -4,15 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
-public class Patient {
-
-
+public class Patient
+{
     public void addPatient(Connection con,Scanner sc) {
         try {
             String Query = "INSERT INTO patients(name,age,gender) VALUES(?,?,?)";
             System.out.println("Enter patient name:");
             String name = sc.next();
             System.out.println("Enter patient age:");
+            sc.nextLine();
             int age = sc.nextInt();
             System.out.println("Enter patient Gender:");
             String gender = sc.next();
@@ -33,6 +33,38 @@ public class Patient {
         }
     }
 
+    public void deletePatient(Connection con,Scanner sc)
+    {
+        System.out.println("Enter patient id:");
+        int patient_id=sc.nextInt();
+        System.out.println("Enter patient name:");
+        String Name=sc.next();
+        sc.nextLine();
+        if(!getPatientById(con,patient_id))
+        {
+            System.out.println("there is no patient on this id and name");
+            return;
+        }
+        try
+        {
+            String Query="DELETE FROM patients WHERE id= ? AND name=?";
+            PreparedStatement ps=con.prepareStatement(Query);
+            ps.setInt(1,patient_id);
+            ps.setString(2,Name);
+            int affectedRow=ps.executeUpdate();
+            if(affectedRow > 0)
+            {
+                System.out.println("patient "+ patient_id + " " + Name +" is Deleted successfully!");
+            }
+            else {
+                System.out.println("pai");
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
     public void viewPatients(Connection con) {
         try {
             String Query = "SELECT * FROM patients";
@@ -73,9 +105,9 @@ public class Patient {
             return false;
         }
     }
-
     public void displayPatientDetails(Connection con,Scanner sc) {
-        try {
+        try
+        {
             System.out.println("Enter patient Id:");
             int patient_id = sc.nextInt();
             if (!getPatientById(con, patient_id)) {
