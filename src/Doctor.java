@@ -20,7 +20,7 @@ public class Doctor
             {
                 int doctor_id=rs.getInt("id");
                 String name=rs.getString("name");
-                String specialization =rs.getString("specilization");
+                String specialization =rs.getString("specialization");
                 System.out.printf("| %-15s | %-17s | %-26s |\n", doctor_id, name, specialization);
                 System.out.println("+-----------------+-------------------+----------------------------+");
             }
