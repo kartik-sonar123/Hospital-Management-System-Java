@@ -68,7 +68,7 @@ public class Appointment
             ResultSet rs = ps.executeQuery();
 
             System.out.println("+-----------------+----------------+----------------+---------------------+");
-            System.out.println("| Appointment ID  | Patient Name   | Doctor Name    | Appointment Date    |");
+            System.out.println("| Appointment ID  | Patient ID     | Doctor ID      | Appointment Date    |");
             System.out.println("+-----------------+----------------+----------------+---------------------+");
             while (rs.next()) {
                 int appointment_id = rs.getInt("id");
